@@ -1,11 +1,11 @@
-package com.udemy.spring.springselenium.config;
+package com.udemy.spring.springselenium.kelvin.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import com.github.javafaker.Faker;
+import com.udemy.spring.springselenium.kelvin.annotations.LazyConfiguration;
 
-@Configuration
+@LazyConfiguration
 public class FakerConfig {
     
     @Bean

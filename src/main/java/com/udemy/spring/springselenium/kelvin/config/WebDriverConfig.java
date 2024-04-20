@@ -1,41 +1,32 @@
-package com.udemy.spring.springselenium.config;
-
-import java.time.Duration;
+package com.udemy.spring.springselenium.kelvin.config;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+import com.udemy.spring.springselenium.kelvin.annotations.LazyConfiguration;
+import com.udemy.spring.springselenium.kelvin.annotations.ThreadScopeBean;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-@Configuration
+@LazyConfiguration
+@Profile("!remote")
 public class WebDriverConfig {
 
-    @Value("${default.timeout:30}")
-    private int timeout;
-
-    @Bean
+    @ThreadScopeBean
     @ConditionalOnProperty(name = "browser", havingValue = "edge")
     public WebDriver edgeDriver() {
         WebDriverManager.edgedriver().setup();
         return new EdgeDriver();
     }
     
-    @Bean
+    @ThreadScopeBean
     @ConditionalOnMissingBean
     public WebDriver chromeDriver() {
         WebDriverManager.chromedriver().setup();
         return new ChromeDriver();
-    }
-
-    @Bean
-    public WebDriverWait webDriverWait(WebDriver driver){
-        return new WebDriverWait(driver, Duration.ofSeconds(timeout));
     }
 }

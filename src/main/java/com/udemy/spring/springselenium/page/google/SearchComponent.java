@@ -5,11 +5,11 @@ import java.util.List;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.springframework.stereotype.Component;
 
+import com.udemy.spring.springselenium.kelvin.annotations.PageFragment;
 import com.udemy.spring.springselenium.page.BasePage;
 
-@Component
+@PageFragment
 public class SearchComponent extends BasePage{
 
     @FindBy(name = "q")

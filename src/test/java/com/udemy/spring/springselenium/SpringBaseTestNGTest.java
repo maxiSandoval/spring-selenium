@@ -5,5 +5,6 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 
 @SpringBootTest
 public class SpringBaseTestNGTest extends AbstractTestNGSpringContextTests {
-}
 
+    
+}

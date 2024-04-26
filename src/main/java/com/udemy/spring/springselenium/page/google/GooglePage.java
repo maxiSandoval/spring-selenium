@@ -37,5 +37,6 @@ public class GooglePage extends BasePage {
 
     public void close(){
         this.driver.close();
+
     }
 }
